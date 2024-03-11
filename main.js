@@ -10,14 +10,22 @@ document.addEventListener('DOMContentLoaded', function (){
     fetch('https://api.github.com/users/danilloneo')
     .then(function (res){
         return res.json();
-    })
+    }) 
+
     .then(function(json) {
-        nameElement.innerText = json.name;
-        usernameElement.innerText = json.login;
-        avatarElement.src = json.avatar_url;
-        followingElement.innerText = json.following;
-        followersElement.innerText = json.followers;
-        reposElement.innerText = json.public_repos;
-        linkElement.href = json.html_url;
+        try {
+            nameElement.innerText = json.name;
+            usernameElement.innerText = json.login;
+            avatarElement.src = json.avatar_url;
+            followingElement.innerText = json.following;
+            followersElement.innerText = json.followers;
+            reposElement.innerText = json.public_repos;
+            linkElement.href = json.html_url;
+        }  
+        catch (erro) {
+            console.log('Ocorreu um erro!');
+        }finally {
+            console.log('fim da execução');
+        }
     })
 })
